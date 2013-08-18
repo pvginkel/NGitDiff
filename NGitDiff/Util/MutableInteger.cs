@@ -48,7 +48,7 @@ namespace NGit.Util
 {
 	/// <summary>A boxed integer that can be modified.</summary>
 	/// <remarks>A boxed integer that can be modified.</remarks>
-	public sealed class MutableInteger
+	internal sealed class MutableInteger
 	{
 		/// <summary>Current value of this boxed value.</summary>
 		/// <remarks>Current value of this boxed value.</remarks>

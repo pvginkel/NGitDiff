@@ -3,7 +3,7 @@ namespace Sharpen
 	using System;
 	using System.IO;
 
-	public class InputStream : IDisposable
+    internal class InputStream : IDisposable
 	{
 		private long mark;
 		protected Stream Wrapped;

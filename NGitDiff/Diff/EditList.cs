@@ -52,7 +52,7 @@ namespace NGit.Diff
 	/// s in a document.
 	/// </summary>
 	[System.Serializable]
-	public class EditList : AList<Edit>
+	public class EditList : System.Collections.Generic.List<Edit>
 	{
 		private const long serialVersionUID = 1L;
 

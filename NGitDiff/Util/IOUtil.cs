@@ -51,7 +51,7 @@ using Sharpen;
 namespace NGit.Util
 {
 	/// <summary>Input/Output utilities</summary>
-	public class IOUtil
+    internal class IOUtil
 	{
         ///// <summary>Read an entire local file into memory as a byte array.</summary>
         ///// <remarks>Read an entire local file into memory as a byte array.</remarks>

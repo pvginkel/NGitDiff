@@ -100,18 +100,33 @@ namespace NGit.Diff
 			lines = RawParseUtils.LineMap(content, 0, content.Length);
 		}
 
-		/// <summary>Create a new sequence from a file.</summary>
-		/// <remarks>
-		/// Create a new sequence from a file.
-		/// <p>
-		/// The entire file contents are used.
-		/// </remarks>
-		/// <param name="file">the text file.</param>
-		/// <exception cref="System.IO.IOException">if Exceptions occur while reading the file
-		/// 	</exception>
-		public RawText(FilePath file) : this(IOUtil.ReadFully(file))
-		{
-		}
+        /// <summary>Create a new sequence from a file.</summary>
+        /// <remarks>
+        /// Create a new sequence from a file.
+        /// <p>
+        /// The entire file contents are used.
+        /// </remarks>
+        /// <param name="file">the text file.</param>
+        /// <exception cref="System.IO.IOException">if Exceptions occur while reading the file
+        /// 	</exception>
+        public RawText(string file)
+            : this(new FilePath(file))
+        {
+        }
+
+        /// <summary>Create a new sequence from a file.</summary>
+        /// <remarks>
+        /// Create a new sequence from a file.
+        /// <p>
+        /// The entire file contents are used.
+        /// </remarks>
+        /// <param name="file">the text file.</param>
+        /// <exception cref="System.IO.IOException">if Exceptions occur while reading the file
+        /// 	</exception>
+        internal RawText(FilePath file)
+            : this(IOUtil.ReadFully(file))
+        {
+        }
 
 		/// <returns>total number of items in the sequence.</returns>
 		public override int Size()
@@ -122,6 +137,28 @@ namespace NGit.Diff
 			//
 			return lines.Size() - 2;
 		}
+
+        /// <summary>Write a specific line to the output stream, without its trailing LF.</summary>
+        /// <remarks>
+        /// Write a specific line to the output stream, without its trailing LF.
+        /// <p>
+        /// The specified line is copied as-is, with no character encoding
+        /// translation performed.
+        /// <p>
+        /// If the specified line ends with an LF ('\n'), the LF is <b>not</b>
+        /// copied. It is up to the caller to write the LF, if desired, between
+        /// output lines.
+        /// </remarks>
+        /// <param name="out">stream to copy the line data onto.</param>
+        /// <param name="i">
+        /// index of the line to extract. Note this is 0-based, so line
+        /// number 1 is actually index 0.
+        /// </param>
+        /// <exception cref="System.IO.IOException">the stream write operation failed.</exception>
+        public virtual void WriteLine(System.IO.Stream @out, int i)
+        {
+            WriteLineInternal(@out, i);
+        }
 
 		/// <summary>Write a specific line to the output stream, without its trailing LF.</summary>
 		/// <remarks>
@@ -140,7 +177,7 @@ namespace NGit.Diff
 		/// number 1 is actually index 0.
 		/// </param>
 		/// <exception cref="System.IO.IOException">the stream write operation failed.</exception>
-		public virtual void WriteLine(OutputStream @out, int i)
+		internal virtual void WriteLineInternal(OutputStream @out, int i)
 		{
 			int start = GetStart(i);
 			int end = GetEnd(i);
@@ -251,6 +288,26 @@ namespace NGit.Diff
 			return IsBinary(raw, raw.Length);
 		}
 
+        /// <summary>
+        /// Determine heuristically whether the bytes contained in a stream
+        /// represents binary (as opposed to text) content.
+        /// </summary>
+        /// <remarks>
+        /// Determine heuristically whether the bytes contained in a stream
+        /// represents binary (as opposed to text) content.
+        /// Note: Do not further use this stream after having called this method! The
+        /// stream may not be fully read and will be left at an unknown position
+        /// after consuming an unknown number of bytes. The caller is responsible for
+        /// closing the stream.
+        /// </remarks>
+        /// <param name="raw">input stream containing the raw file content.</param>
+        /// <returns>true if raw is likely to be a binary file, false otherwise</returns>
+        /// <exception cref="System.IO.IOException">if input stream could not be read</exception>
+        public static bool IsBinary(System.IO.Stream raw)
+        {
+            return IsBinaryInternal(raw);
+        }
+
 		/// <summary>
 		/// Determine heuristically whether the bytes contained in a stream
 		/// represents binary (as opposed to text) content.
@@ -266,7 +323,7 @@ namespace NGit.Diff
 		/// <param name="raw">input stream containing the raw file content.</param>
 		/// <returns>true if raw is likely to be a binary file, false otherwise</returns>
 		/// <exception cref="System.IO.IOException">if input stream could not be read</exception>
-		public static bool IsBinary(InputStream raw)
+		internal static bool IsBinaryInternal(InputStream raw)
 		{
 			byte[] buffer = new byte[FIRST_FEW_BYTES];
 			int cnt = 0;

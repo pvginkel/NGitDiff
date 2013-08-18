@@ -47,7 +47,7 @@ namespace NGit.Util.IO
 {
 	/// <summary>An OutputStream which ignores everything written to it.</summary>
 	/// <remarks>An OutputStream which ignores everything written to it.</remarks>
-	public class NullOutputStream : OutputStream
+	internal class NullOutputStream : OutputStream
 	{
 		/// <summary>The canonical instance.</summary>
 		/// <remarks>The canonical instance.</remarks>

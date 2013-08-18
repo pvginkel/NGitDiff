@@ -28,18 +28,18 @@ using System;
 
 namespace Sharpen
 {
-	public class VirtualMachineError : Error
+	internal class VirtualMachineError : Error
 	{
 	}
 
-	public class StackOverflowError : VirtualMachineError
+	internal class StackOverflowError : VirtualMachineError
 	{
 		public StackOverflowError ()
 		{
 		}
 	}
 
-	public class BrokenBarrierException : Exception
+	internal class BrokenBarrierException : Exception
 	{
 	}
 
@@ -47,15 +47,15 @@ namespace Sharpen
 	{
 	}
 
-	public class CharacterCodingException : Exception
+	internal class CharacterCodingException : Exception
 	{
 	}
 
-	public class DataFormatException : Exception
+	internal class DataFormatException : Exception
 	{
 	}
 
-	public class EOFException : Exception
+	internal class EOFException : Exception
 	{
 		public EOFException ()
 		{
@@ -66,7 +66,7 @@ namespace Sharpen
 		}
 	}
 
-	public class Error : Exception
+	internal class Error : Exception
 	{
 		public Error ()
 		{
@@ -85,33 +85,33 @@ namespace Sharpen
 		}
 	}
 
-	public class ExecutionException : Exception
+	internal class ExecutionException : Exception
 	{
 		public ExecutionException (Exception inner): base ("Execution failed", inner)
 		{
 		}
 	}
 
-	public class InstantiationException : Exception
+	internal class InstantiationException : Exception
 	{
 	}
 
-	public class InterruptedIOException : Exception
+	internal class InterruptedIOException : Exception
 	{
 		public InterruptedIOException (string msg) : base(msg)
 		{
 		}
 	}
 
-	public class MissingResourceException : Exception
+	internal class MissingResourceException : Exception
 	{
 	}
 
-	public class NoSuchAlgorithmException : Exception
+	internal class NoSuchAlgorithmException : Exception
 	{
 	}
 
-	public class NoSuchElementException : Exception
+	internal class NoSuchElementException : Exception
 	{
 	}
 
@@ -123,7 +123,7 @@ namespace Sharpen
 	{
 	}
 
-	public class ParseException : Exception
+	internal class ParseException : Exception
 	{
 		public ParseException ()
 		{
@@ -134,7 +134,7 @@ namespace Sharpen
 		}
 	}
 
-	public class RuntimeException : Exception
+	internal class RuntimeException : Exception
 	{
 		public RuntimeException ()
 		{
@@ -176,7 +176,7 @@ namespace Sharpen
 	{
 	}
 
-	public class GitException : Exception
+	internal class GitException : Exception
 	{
 	}
 	

@@ -11,7 +11,7 @@ using ProcessStartInfo = System.Diagnostics.ProcessStartInfo;
 
 namespace Sharpen
 {
-	public class Runtime
+	internal class Runtime
 	{
 //        private static Runtime instance;
 //        private List<ShutdownHook> shutdownHooks = new List<ShutdownHook> ();

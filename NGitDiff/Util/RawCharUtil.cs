@@ -55,7 +55,7 @@ namespace NGit.Util
 	/// <p>
 	/// Characters are assumed to be 8-bit US-ASCII.
 	/// </remarks>
-	public class RawCharUtil
+	internal class RawCharUtil
 	{
 		private static readonly bool[] WHITESPACE = new bool[256];
 

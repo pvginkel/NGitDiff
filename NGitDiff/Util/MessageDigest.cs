@@ -4,7 +4,7 @@ namespace Sharpen
 	using System.IO;
 	using System.Security.Cryptography;
 
-	public abstract class MessageDigest
+	internal abstract class MessageDigest
 	{
 		protected MessageDigest ()
 		{
@@ -42,7 +42,7 @@ namespace Sharpen
 	}
 
 
-	public class MessageDigest<TAlgorithm> : MessageDigest where TAlgorithm : HashAlgorithm, new()
+    internal class MessageDigest<TAlgorithm> : MessageDigest where TAlgorithm : HashAlgorithm, new()
 	{
 		private TAlgorithm _hash;
 		private CryptoStream _stream;

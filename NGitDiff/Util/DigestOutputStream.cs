@@ -2,7 +2,7 @@ namespace Sharpen
 {
 	using System;
 
-	public class DigestOutputStream : OutputStream
+    internal class DigestOutputStream : OutputStream
 	{
 		private MessageDigest digest;
 		private bool @on = true;

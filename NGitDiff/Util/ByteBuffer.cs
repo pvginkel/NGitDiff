@@ -2,7 +2,7 @@ namespace Sharpen
 {
 	using System;
 
-	public class ByteBuffer
+    internal class ByteBuffer
 	{
 		private byte[] buffer;
 		private DataConverter c;

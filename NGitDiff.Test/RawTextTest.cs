@@ -81,7 +81,7 @@ namespace NGit.Diff
 		{
 			RawText a = new RawText(Constants.EncodeASCII("foo-a\nfoo-b\n"));
 			ByteArrayOutputStream o = new ByteArrayOutputStream();
-			a.WriteLine(o, 0);
+			a.WriteLineInternal(o, 0);
 			byte[] r = o.ToByteArray();
 			NUnit.Framework.Assert.AreEqual("foo-a", RawParseUtils.Decode(r));
 		}
@@ -92,7 +92,7 @@ namespace NGit.Diff
 		{
 			RawText a = new RawText(Constants.EncodeASCII("foo-a\nfoo-b"));
 			ByteArrayOutputStream o = new ByteArrayOutputStream();
-			a.WriteLine(o, 1);
+			a.WriteLineInternal(o, 1);
 			byte[] r = o.ToByteArray();
 			NUnit.Framework.Assert.AreEqual("foo-b", RawParseUtils.Decode(r));
 		}
@@ -103,7 +103,7 @@ namespace NGit.Diff
 		{
 			RawText a = new RawText(Constants.EncodeASCII("a\n\nb\n"));
 			ByteArrayOutputStream o = new ByteArrayOutputStream();
-			a.WriteLine(o, 1);
+			a.WriteLineInternal(o, 1);
 			byte[] r = o.ToByteArray();
 			NUnit.Framework.Assert.AreEqual(string.Empty, RawParseUtils.Decode(r));
 		}

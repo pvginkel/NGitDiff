@@ -3,7 +3,7 @@ namespace Sharpen
 	using System;
 	using System.IO;
 
-	public class OutputStream : IDisposable
+	internal class OutputStream : IDisposable
 	{
 		protected Stream Wrapped;
 

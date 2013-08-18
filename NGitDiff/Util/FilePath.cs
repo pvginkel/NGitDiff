@@ -5,7 +5,7 @@ namespace Sharpen
 	using System.IO;
 	using System.Threading;
 
-	public class FilePath
+    internal class FilePath
 	{
 		private string path;
 		private static long tempCounter;

@@ -52,7 +52,7 @@ namespace NGit.Util
 {
 	/// <summary>Handy utility functions to parse raw object contents.</summary>
 	/// <remarks>Handy utility functions to parse raw object contents.</remarks>
-	public sealed class RawParseUtils
+	internal sealed class RawParseUtils
 	{
         ///// <summary>UTF-8 charset constant.</summary>
         ///// <remarks>UTF-8 charset constant.</remarks>
