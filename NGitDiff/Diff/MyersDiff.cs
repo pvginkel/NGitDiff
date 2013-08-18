@@ -197,7 +197,7 @@ namespace NGit.Diff
 			}
 			if (edit.GetType() != Edit.Type.EMPTY)
 			{
-				edits.Add(edits.Count, edit);
+				Extensions.Add(edits, edits.Count, edit);
 			}
 			// after middle
 			if (endA > edit.endA || endB > edit.endB)

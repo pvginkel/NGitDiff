@@ -1,6 +1,5 @@
 using System.Reflection;
 using System.Net;
-using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Collections.Specialized;
@@ -28,7 +27,7 @@ namespace Sharpen
 //            EPOCH_TICKS = time.Ticks;
 //        }
 
-        public static void Add<T>(this IList<T> list, int index, T item)
+        public static void Add<T>(IList<T> list, int index, T item)
         {
             list.Insert(index, item);
         }
@@ -102,7 +101,7 @@ namespace Sharpen
 //            return e.BodyName.ToUpper ();
 //        }
 
-        public static string Decode(this Encoding e, byte[] chars, int start, int len)
+        public static string Decode(Encoding e, byte[] chars, int start, int len)
         {
             try
             {
@@ -133,9 +132,9 @@ namespace Sharpen
             }
         }
 
-        public static string Decode(this Encoding e, ByteBuffer buffer)
+        public static string Decode(Encoding e, ByteBuffer buffer)
         {
-            return e.Decode(buffer.Array(), buffer.ArrayOffset() + buffer.Position(), buffer.Limit() - buffer.Position());
+            return Decode(e, buffer.Array(), buffer.ArrayOffset() + buffer.Position(), buffer.Limit() - buffer.Position());
         }
 
 //        public static ByteBuffer Encode (this Encoding e, CharSequence str)
@@ -174,13 +173,13 @@ namespace Sharpen
 //        {
 //        }
 
-        public static bool AddItem<T>(this IList<T> list, T item)
+        public static bool AddItem<T>(IList<T> list, T item)
         {
             list.Add(item);
             return true;
         }
 
-        public static bool AddItem<T>(this ICollection<T> list, T item)
+        public static bool AddItem<T>(ICollection<T> list, T item)
         {
             list.Add(item);
             return true;
@@ -311,12 +310,12 @@ namespace Sharpen
 //            Console.WriteLine (cause);
 //        }
 
-        public static bool IsEmpty<T>(this ICollection<T> col)
+        public static bool IsEmpty<T>(ICollection<T> col)
         {
             return (col.Count == 0);
         }
 
-        public static bool IsEmpty<T>(this Stack<T> col)
+        public static bool IsEmpty<T>(Stack<T> col)
         {
             return (col.Count == 0);
         }
@@ -331,12 +330,12 @@ namespace Sharpen
 //            return char.IsUpper (c);
 //        }
 
-        public static Sharpen.Iterator<T> Iterator<T>(this ICollection<T> col)
+        public static Sharpen.Iterator<T> Iterator<T>(ICollection<T> col)
         {
             return new EnumeratorWrapper<T>(col, col.GetEnumerator());
         }
 
-        public static Sharpen.Iterator<T> Iterator<T>(this IEnumerable<T> col)
+        public static Sharpen.Iterator<T> Iterator<T>(IEnumerable<T> col)
         {
             return new EnumeratorWrapper<T>(col, col.GetEnumerator());
         }
@@ -379,7 +378,7 @@ namespace Sharpen
 //            return new DateTimeOffset (num + offset.Ticks, offset);
 //        }
 
-        public static CharsetDecoder NewDecoder(this Encoding enc)
+        public static CharsetDecoder NewDecoder(Encoding enc)
         {
             return new CharsetDecoder(enc);
         }
@@ -473,7 +472,7 @@ namespace Sharpen
 //            return string.Compare (str, toOffset, other, ooffset, len) == 0;
 //        }
 
-        public static T Set<T>(this IList<T> list, int index, T item)
+        public static T Set<T>(IList<T> list, int index, T item)
         {
             T old = list[index];
             list[index] = item;

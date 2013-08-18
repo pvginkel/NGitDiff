@@ -68,6 +68,15 @@ namespace Sharpen
 					n += o.GetHashCode ();
 			return n;
 		}
+
+        public static int GetHashCode(List<T> list)
+        {
+            int n = 0;
+            foreach (object o in list)
+                if (o != null)
+                    n += o.GetHashCode();
+            return n;
+        }
 		
 		public void RemoveElement (T elem)
 		{

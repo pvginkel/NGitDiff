@@ -2,13 +2,12 @@ namespace Sharpen
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 
 	internal class Arrays
 	{
 		public static List<T> AsList<T> (params T[] array)
 		{
-			return array.ToList<T> ();
+            return new List<T>(array);
 		}
 
 		public static bool Equals<T> (T[] a1, T[] a2)

@@ -184,7 +184,7 @@ namespace NGit.Diff
 						// An empty edit indicates there is nothing in common.
 						// Replace the entire region.
 						//
-						this.edits.AddItem(r);
+						Extensions.AddItem(this.edits, r);
 					}
 					else
 					{
@@ -211,7 +211,7 @@ namespace NGit.Diff
 						}
 						else
 						{
-							this.edits.AddItem(r);
+							Extensions.AddItem(this.edits, r);
 						}
 					}
 				}
@@ -224,7 +224,7 @@ namespace NGit.Diff
 					case Edit.Type.INSERT:
 					case Edit.Type.DELETE:
 					{
-						this.edits.AddItem(r);
+						Extensions.AddItem(this.edits, r);
 						break;
 					}
 

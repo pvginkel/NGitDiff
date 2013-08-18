@@ -67,7 +67,7 @@ namespace NGit.Diff
 		public static NGit.Diff.EditList Singleton(Edit edit)
 		{
 			NGit.Diff.EditList res = new NGit.Diff.EditList(1);
-			res.AddItem(edit);
+			Extensions.AddItem(res, edit);
 			return res;
 		}
 

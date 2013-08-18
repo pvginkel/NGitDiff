@@ -16,7 +16,7 @@ namespace Sharpen
 
 		public string Decode (ByteBuffer b)
 		{
-			string res = enc.Decode (b);
+			string res = Extensions.Decode(enc, b);
 			if (res.IndexOf ('\uFFFD') != -1 && decoder.Fallback == DecoderFallback.ExceptionFallback)
 				throw new CharacterCodingException ();
 			return res;

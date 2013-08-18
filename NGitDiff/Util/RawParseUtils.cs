@@ -1149,7 +1149,7 @@ namespace NGit.Util
         ///// <exception cref="Sharpen.CharacterCodingException"></exception>
         private static string Decode(ByteBuffer b, System.Text.Encoding charset)
         {
-            CharsetDecoder d = charset.NewDecoder();
+            CharsetDecoder d = Extensions.NewDecoder(charset);
             d.OnMalformedInput(CodingErrorAction.REPORT);
             d.OnUnmappableCharacter(CodingErrorAction.REPORT);
             return d.Decode(b).ToString();

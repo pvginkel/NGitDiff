@@ -53,7 +53,7 @@ namespace NGit.Diff
 		public virtual void TestEmptyInputs()
 		{
 			EditList r = Diff(T(string.Empty), T(string.Empty));
-			NUnit.Framework.Assert.IsTrue(r.IsEmpty(), "is empty");
+			NUnit.Framework.Assert.IsTrue(Extensions.IsEmpty(r), "is empty");
 		}
 
 		[NUnit.Framework.Test]
